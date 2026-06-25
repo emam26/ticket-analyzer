@@ -15,7 +15,7 @@ services:
       retries: 10
 
   backend:
-    image: yourdockerhub/ticket-analyzer-backend:v1
+    image: emam26/ticket-analyzer-backend:v1
     container_name: ticket-analyzer-backend
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/ticket_db
@@ -29,7 +29,7 @@ services:
       - "8000:8000"
 
   frontend:
-    image: yourdockerhub/ticket-analyzer-frontend:v1
+    image: emam26/ticket-analyzer-frontend:v1
     container_name: ticket-analyzer-frontend
     depends_on:
       - backend

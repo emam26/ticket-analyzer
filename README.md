@@ -86,9 +86,9 @@ docker compose up --build
 4. Open `http://VM_PUBLIC_IP:3000` in a browser.
 
 ## Links
-- GitHub:
-- DockerHub Backend:
-- DockerHub Frontend:
+- GitHub: https://github.com/emam26/ticket-analyzer
+- DockerHub Backend: https://hub.docker.com/r/emam26/ticket-analyzer-backend
+- DockerHub Frontend: https://hub.docker.com/r/emam26/ticket-analyzer-frontend
 - Live URL:
 
 ## Troubleshooting
