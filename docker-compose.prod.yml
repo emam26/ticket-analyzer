@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    container_name: ticket-analyzer-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ticket_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ticket_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    image: yourdockerhub/ticket-analyzer-backend:v1
+    container_name: ticket-analyzer-backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/ticket_db
+      MODEL_NAME: distilbert-base-uncased-finetuned-sst-2-english
+      HF_HOME: /opt/hf-cache
+      TRANSFORMERS_OFFLINE: "1"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    image: yourdockerhub/ticket-analyzer-frontend:v1
+    container_name: ticket-analyzer-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
