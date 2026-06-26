@@ -20,7 +20,7 @@ React/Vite (Nginx)  ->  /api/*  ->  FastAPI  ->  Hugging Face model
 - Docker Compose
 - Puku CLI
 - DockerHub
-- Poridhi Cloud VM / AWS
+- Poridhi Cloud VM
 
 ## API Reference
 
@@ -89,7 +89,7 @@ docker compose up --build
 - GitHub: https://github.com/emam26/ticket-analyzer
 - DockerHub Backend: https://hub.docker.com/r/emam26/ticket-analyzer-backend
 - DockerHub Frontend: https://hub.docker.com/r/emam26/ticket-analyzer-frontend
-- Live URL:
+- Live URL: http://PORIDHI_VM_PUBLIC_IP:3000
 
 ## Troubleshooting
 - **Backend cannot connect to DB** — ensure the `db` service has the
